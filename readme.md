@@ -2,6 +2,9 @@ This is a python script for the Makerlife Weatherstation to push data via MQTT t
 
 The data is pushed every 5 min. The time to can be changed if the interval variable is changed. The wind measurement is done during the interval secoconds. Each publish consits of 15 measurement rounds.
 
+Paho Mqtt has to be added to your python installation. 
+`pip install paho-mqtt`
+
 Example of configuration.yaml:
 ```yaml
 sensor:
