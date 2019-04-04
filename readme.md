@@ -24,3 +24,10 @@ sensor:
     unit_of_measurement: 'mm'
     value_template: '{{ value_json.rain | round(1) }}'
 ```
+
+Edit the scirpt with your MQTT broker IP and Pass. <br>
+
+Login to the you raspi via SSH. Start the script with:<br>
+`nohup python weather.py &` <br>
+This enables to logut from the pi without closing the down the script.
+ 
