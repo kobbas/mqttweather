@@ -1,6 +1,6 @@
-This is an implementation for the Makerlife Weatherstation to push data via MQTT to for example Homeassistant. To get it work with homeassistant a MQTT broker has to be configured and filled in to the code. Also some the sensors has to be added to HA. 
+This is a python script for the Makerlife Weatherstation to push data via MQTT to e.g. Homeassistant. To get it work with homeassistant, a MQTT broker has to be configured and filled in to the script. Also a couple of sensors has to be added to HA. 
 
-The data is pushed every 5 min. The time to can be changed if interval time is changed. The wind measurement is done per 20 secoconds and 15 rounds for each publish.
+The data is pushed every 5 min. The time to can be changed if the interval variable is changed. The wind measurement is done during the interval secoconds. Each publish consits of 15 measurement rounds.
 
 Example of configuration.yaml:
 ```yaml
@@ -30,4 +30,3 @@ Edit the scirpt with your MQTT broker IP and Pass. <br>
 Login to the you raspi via SSH. Start the script with:<br>
 `nohup python weather.py &` <br>
 This enables to logut from the pi without closing the down the script.
- 
