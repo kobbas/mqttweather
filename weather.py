@@ -20,7 +20,7 @@ bucket_count = 0
 wind_count = 0
 rain_cum = 0
 interval = 20
-ADJUSTMENT = 1.18
+ADJUSTMENT = 1.18*(interval/5)
 BUCKET_SIZE = 0.2794
 circ_m = dia_m * math.pi 
 wind_speed_sensor = DigitalInputDevice(17, pull_up=True)
@@ -31,9 +31,6 @@ def wind (time_sec):
     rotations = wind_count / 2.0 
     dist_m=circ_m * rotations
     m_per_sec = (dist_m / time_sec) * ADJUSTMENT
-#   print ( 'Roations: '+ str(rotations) +
-#          ' Dist in m: ' + str(dist_m) + 
-#          ' Vel ' + str(m_per_sec))
     wind_count = 0
     return m_per_sec 
 
@@ -43,6 +40,7 @@ def spin ():
 def rain():
     global rain_cum
     rain_cum = rain_cum + BUCKET_SIZE
+
 def temperature():
 	return temp_sensor.get_temperature()
 
@@ -65,6 +63,7 @@ while True:
             "temperature":temper,
             "windspeed":speed_avg})
         mqtt_c.publish('outside/weather/',payload)
+        # print('Publish data: ' + payload)
         i=0
         speed.clear()
     else:
